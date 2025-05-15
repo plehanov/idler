@@ -1,0 +1,12 @@
+[Unit]
+Description=Idler
+After=syslog.target network.target
+
+[Service]
+ExecStart=/local/idler
+RestartSec=5s
+Restart=on-success
+User=takamura
+
+[Install]
+WantedBy=multi-user.target
