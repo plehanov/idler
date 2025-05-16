@@ -6,7 +6,7 @@ After=syslog.target network.target
 ExecStart=/local/idler
 RestartSec=5s
 Restart=on-success
-User=takamura
+User=root
 
 [Install]
 WantedBy=multi-user.target

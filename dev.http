@@ -1,4 +1,5 @@
-### GET request to example server
-GET http://localhost:8080/payload/2000/0
+### GET request to nop server
+GET http://localhost:8080/2000/10
 
-###
+### GET default request
+GET http://localhost:8080/

@@ -4,7 +4,7 @@ The server accepts CPU time, synchronous wait parameters in the request URL. If 
 
 ## Build
 ```bash
-go build idler
+go build idler.go
 ```
 
 ## Run
@@ -14,18 +14,21 @@ go build idler
 
 ## Use
 ```bash
-curl -X GET "http://localhost:8080/payload/2000/0"
+curl -X GET "http://localhost:8080/2000/0"
 ```
 
-Url `payload/{cpuMsec}/{waitMsec}`
+Url `/{cpuMsec}/{waitMsec}`
 
 `cpuMsec` - CPU time that the service spends on calculating hash sums
 
 `waitMsec` - Waiting after execution
 
-Default parameters - `payload/10/0`
 
-
+## Use with default
+```bash
+curl -X GET "http://localhost:8080/"
+```
+Default parameters - `/10/0`
 
 
 
