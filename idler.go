@@ -4,6 +4,7 @@ import (
 	"crypto/md5"
 	"encoding/base64"
 	"encoding/json"
+	"flag"
 	"io"
 	"net/http"
 	"os"
@@ -14,6 +15,11 @@ import (
 )
 
 func main() {
+	maxProcs := flag.Int("maxprocs", runtime.NumCPU(), "maximum number of CPUs that can be used")
+	flag.Parse()
+
+	runtime.GOMAXPROCS(*maxProcs)
+
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		cpuMsec := 10
 		waitMsec := 0
@@ -67,7 +73,7 @@ func main() {
 			"status":        "completed",
 			"cpu_time_ms":   cpuMsec,
 			"wait_time_ms":  waitMsec,
-			"total_time_ms": time.Now().Sub(startTime).Milliseconds(),
+			"total_time_ms": time.Since(startTime).Milliseconds(),
 		}
 
 		w.Header().Set("Content-Type", "application/json")
