@@ -3,7 +3,7 @@ Description=Idler
 After=syslog.target network.target
 
 [Service]
-ExecStart=/local/idler
+ExecStart=/local/idler -maxprocs 4 -port 8078
 RestartSec=5s
 Restart=on-success
 User=root
