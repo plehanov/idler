@@ -66,5 +66,10 @@ func main() {
 		w.Write([]byte("OK"))
 	})
 
+	http.HandleFunc("/hello", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "text/plain")
+		w.Write([]byte("Hello, world!"))
+	})
+
 	http.ListenAndServe(":"+strconv.Itoa(*httpPort), nil)
 }
