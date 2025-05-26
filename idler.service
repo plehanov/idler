@@ -3,10 +3,19 @@ Description=Idler
 After=syslog.target network.target
 
 [Service]
-ExecStart=/local/idler -maxprocs 4 -port 8078
+Type=simple
+WorkingDirectory=/local/idler
+ExecStart=/local/idler/idler -maxprocs 4 -port 8078
 RestartSec=5s
 Restart=on-success
 User=root
+Group=root
+
+# Security
+ProtectSystem=strict
+ReadWritePaths=/local/idler
+StandardOutput=journal
+StandardError=journal
 
 [Install]
 WantedBy=multi-user.target
